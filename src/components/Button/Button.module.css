@@ -1,24 +1,172 @@
 .button {
-  padding: 8px 16px;
-  font-size: 16px;
-  border-radius: 4px;
+  --pixel-size: 2px;
+  --main-color: #4a90e2;
+  --highlight: #6aa8ff;
+  --shadow: #2c6cb0;
+  
+  position: relative;
   border: none;
+  padding: 12px 24px;
+  background: var(--main-color);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.1s ease;
+  margin: 4px;
+  
+  /* 像素边框效果 */
+  box-shadow: 
+    calc(var(--pixel-size) * 2) calc(var(--pixel-size) * 2) 0 var(--shadow),
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow),
+    inset (-1 * var(--pixel-size)) (-1 * var(--pixel-size)) 0 var(--shadow),
+    inset var(--pixel-size) var(--pixel-size) 0 var(--highlight);
 }
 
-.primary {
-  background-color: #007bff;
-  color: #fff;
+.content {
+  position: relative;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  text-shadow: 1px 1px 0 var(--shadow);
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.secondary {
-  background-color: #6c757d;
-  color: #fff;
+/* 交互状态 */
+.button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow),
+    inset (-1 * var(--pixel-size)) (-1 * var(--pixel-size)) 0 var(--shadow),
+    inset var(--pixel-size) var(--pixel-size) 0 var(--highlight);
 }
 
+/* 禁用状态 */
 .button:disabled {
-  background-color: #e0e0e0;
-  color: #a0a0a0;
+  opacity: 0.6;
   cursor: not-allowed;
+  background: #666;
+  --main-color: #666;
+  --highlight: #888;
+  --shadow: #444;
+  transform: none;
+}
+
+.button:disabled:active{
+  transform: none;
+  box-shadow: 
+    calc(var(--pixel-size) * 2) calc(var(--pixel-size) * 2) 0 var(--shadow),
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow),
+    inset (-1 * var(--pixel-size)) (-1 * var(--pixel-size)) 0 var(--shadow),
+    inset var(--pixel-size) var(--pixel-size) 0 var(--highlight);
+}
+
+.button:disabled .loadingContent {
+  animation: pixelBounce 0.8s infinite ease-in-out !important; /* 新增 !important */
+  position: relative; /* 创建新的堆叠上下文 */
+  z-index: 1; /* 确保动画层级高于父级 */
+}
+
+/* 尺寸控制 */
+.sm {
+  padding: 8px 16px;
+  font-size: 12px;
+  --dot-size: 4px;
+  --dot-spacing: 2px;
+}
+
+.md {
+  padding: 12px 24px;
+  font-size: 16px;
+  --dot-size: 6px;
+  --dot-spacing: 4px;
+}
+
+.lg {
+  padding: 16px 32px;
+  font-size: 20px;
+  --dot-size: 8px;
+  --dot-spacing: 6px;
+}
+
+/* 可选：不同颜色变体 */
+.primary {
+  --main-color: #4a90e2;
+  --highlight: #6aa8ff;
+  --shadow: #2c6cb0;
+}
+
+.warning {
+  --main-color: #e24a4a;
+  --highlight: #ff6a6a;
+  --shadow: #b02c2c;
+}
+
+.success {
+  --main-color: #4ae24a;
+  --highlight: #6aff6a;
+  --shadow: #2cb02c;
+}
+
+/* Loading 动画 */
+/* Loading 动画 */
+@keyframes pixelBounce {
+  0%, 100% { 
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+  }
+  50% { 
+    transform: translateY(calc(-1 * var(--dot-size)));
+    animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+  }
+}
+
+.loader {
+  --jump-height: calc(-1 * var(--dot-size));
+  display: inline-flex;
+  align-items: center;
+  animation: pixelBounce 0.8s infinite ease-in-out;
+  margin-right: 8px;
+}
+
+/* 创建三个像素点 */
+.loader::before,
+.loader::after,
+.loader span {
+  content: '';
+  display: block;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  margin: 0 var(--dot-spacing);
+  background: currentColor;
+  box-shadow: 1px 1px 0 var(--shadow);
+}
+
+/* 第一个点 */
+.loader::before {
+  animation: pixelBounce 0.8s infinite ease-in-out;
+}
+
+/* 第二个点（使用伪元素生成） */
+.loader::after {
+  animation: pixelBounce 0.8s 0.2s infinite ease-in-out;
+}
+
+/* 第三个点（通过空元素生成） */
+.loader span {
+  display: block;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  margin: 0 var(--dot-spacing);
+  background: currentColor;
+  box-shadow: 1px 1px 0 var(--shadow);
+  animation: pixelBounce 0.8s 0.4s infinite ease-in-out;
+}
+
+/* Loading 状态文字调整 */
+.loadingContent {
+  font-size: 1em;
+  opacity: 0.8;
+  vertical-align: middle;
+}
+
+.button:disabled .content {
+  animation: none;
 }

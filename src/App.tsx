@@ -1,12 +1,12 @@
 import './App.css'
-import Button from './components/Button';
+import {Button} from './components/Button';
 
 function App() {
 
 
   return (
     <>
-      <Button label='按钮' onClick={() => {console.log("click!!!")}} variant='secondary'/>
+      <Button variant='warning' size='md' isLoading>TEST</Button>
     </>
   )
 }

@@ -1,30 +1,35 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
-import Button  from './Button';
+import { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
+  title: 'Components/Button',
   component: Button,
+  tags: ['autodocs'],
+  argTypes: {
+    onClick: { action: 'clicked' },
+    disabled: { control: 'boolean' },
+  },
 };
-
 export default meta;
+
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
-    label: 'Button',
+    children: 'Pixel Button',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    children: 'Disabled Button',
+    disabled: true,
   },
 };
 
 export const Secondary: Story = {
   args: {
-    ...Primary.args,
-    label: '😄👍😍💯',
-  },
-};
-
-export const Tertiary: Story = {
-  args: {
-    ...Primary.args,
-    label: '📚📕📈🤓',
+    children: 'Secondary Button',
+    className: 'secondary',
   },
 };

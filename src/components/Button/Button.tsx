@@ -1,23 +1,55 @@
-import React from 'react';
-import styles from './Button.module.css';
+import { FC, ReactNode } from "react";
+import styles from "./Button.module.css";
 
-type ButtonProps = {
-  label: string; // 按钮显示的文字
-  onClick?: () => void; // 点击事件回调
-  variant?: 'primary' | 'secondary'; // 按钮样式类型
-  disabled?: boolean; // 是否禁用
-};
+interface ButtonProps {
+  children: ReactNode;
+  onClick?: () => void;
+  disabled?: boolean;
+  isLoading?: boolean;
+  loadingText?: string;
+  type?: "button" | "submit" | "reset";
+  variant?: "primary" | "warning";
+  className?: string;
+  size?: "sm" | "md" | "lg";
+}
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, variant = 'primary', disabled = false }) => {
+export const Button: FC<ButtonProps> = ({
+  children,
+  onClick,
+  disabled = false,
+  isLoading = false,
+  loadingText = "Loading...",
+  type = "button",
+  variant = "primary",
+  className = "",
+  size = "md",
+}) => {
+  const isDisabled = disabled || isLoading;
   return (
     <button
-      className={`${styles.button} ${styles[variant]}`}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {label}
+      type={type}
+      onClick={isDisabled ? undefined : onClick}
+      disabled={isDisabled}
+      className={`${styles.button} ${styles[variant]} ${styles[size]} ${className}`}
+      aria-disabled={isDisabled}
+      aria-busy={isLoading}>
+      <span
+        className={`${styles.content} ${
+          isLoading ? styles.loadingContent : ""
+        }`}>
+        {isLoading ? (
+          <>
+            <span
+              className={styles.loader}
+              aria-hidden="true">
+              <span /> {/* 第三个点 */}
+            </span>
+            {loadingText}
+          </>
+        ) : (
+          children
+        )}
+      </span>
     </button>
   );
 };
-
-export default Button;
