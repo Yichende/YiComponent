@@ -17,6 +17,7 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     children: 'Pixel Button',
+    variant: 'primary'
   },
 };
 
@@ -27,9 +28,18 @@ export const Disabled: Story = {
   },
 };
 
-export const Secondary: Story = {
+export const Warning: Story = {
   args: {
-    children: 'Secondary Button',
-    className: 'secondary',
+    children: 'Warning Button',
+    variant: "warning",
+    size: 'sm',
   },
 };
+
+export const Loading: Story = {
+  args: {
+    children: 'Loading Button',
+    isLoading: true,
+    loadingText: 'Loading',
+  }
+}

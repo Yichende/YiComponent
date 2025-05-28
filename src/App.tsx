@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <Button variant='warning' size='md' isLoading>TEST</Button>
+      <Button variant='warning' size='md'>TEST</Button>
     </>
   )
 }

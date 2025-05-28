@@ -5,6 +5,7 @@
   --shadow: #2c6cb0;
   
   position: relative;
+  border-radius: 0;
   border: none;
   padding: 12px 24px;
   background: var(--main-color);
@@ -16,7 +17,7 @@
   box-shadow: 
     calc(var(--pixel-size) * 2) calc(var(--pixel-size) * 2) 0 var(--shadow),
     var(--pixel-size) var(--pixel-size) 0 var(--shadow),
-    inset (-1 * var(--pixel-size)) (-1 * var(--pixel-size)) 0 var(--shadow),
+    inset calc(-1 * var(--pixel-size)) calc(-1 * var(--pixel-size)) 0 var(--shadow),
     inset var(--pixel-size) var(--pixel-size) 0 var(--highlight);
 }
 
@@ -30,60 +31,56 @@
 }
 
 /* 交互状态 */
-.button:active {
+.button:not(:disabled):active {
   transform: translate(2px, 2px);
   box-shadow: 
     var(--pixel-size) var(--pixel-size) 0 var(--shadow),
-    inset (-1 * var(--pixel-size)) (-1 * var(--pixel-size)) 0 var(--shadow),
+    inset calc(-1 * var(--pixel-size)) calc(-1 * var(--pixel-size)) 0 var(--shadow),
     inset var(--pixel-size) var(--pixel-size) 0 var(--highlight);
+}
+
+/* 悬停效果 */
+.button:not(:disabled):hover {
+  filter: brightness(1.1);
 }
 
 /* 禁用状态 */
 .button:disabled {
   opacity: 0.6;
-  cursor: not-allowed;
   background: #666;
   --main-color: #666;
   --highlight: #888;
   --shadow: #444;
   transform: none;
-}
-
-.button:disabled:active{
-  transform: none;
-  box-shadow: 
-    calc(var(--pixel-size) * 2) calc(var(--pixel-size) * 2) 0 var(--shadow),
-    var(--pixel-size) var(--pixel-size) 0 var(--shadow),
-    inset (-1 * var(--pixel-size)) (-1 * var(--pixel-size)) 0 var(--shadow),
-    inset var(--pixel-size) var(--pixel-size) 0 var(--highlight);
+  cursor: not-allowed;
 }
 
 .button:disabled .loadingContent {
-  animation: pixelBounce 0.8s infinite ease-in-out !important; /* 新增 !important */
+  animation: pixelBounce 0.8s infinite ease-in-out !important;
   position: relative; /* 创建新的堆叠上下文 */
   z-index: 1; /* 确保动画层级高于父级 */
 }
 
 /* 尺寸控制 */
 .sm {
+  padding: 6px 12px;
+  font-size: 10px;
+  --dot-size: 3px;
+  --dot-spacing: 1px;
+}
+
+.md {
   padding: 8px 16px;
   font-size: 12px;
   --dot-size: 4px;
   --dot-spacing: 2px;
 }
 
-.md {
-  padding: 12px 24px;
-  font-size: 16px;
-  --dot-size: 6px;
-  --dot-spacing: 4px;
-}
-
 .lg {
-  padding: 16px 32px;
-  font-size: 20px;
-  --dot-size: 8px;
-  --dot-spacing: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  --dot-size: 5px;
+  --dot-spacing: 3px;
 }
 
 /* 可选：不同颜色变体 */
@@ -105,7 +102,6 @@
   --shadow: #2cb02c;
 }
 
-/* Loading 动画 */
 /* Loading 动画 */
 @keyframes pixelBounce {
   0%, 100% { 
