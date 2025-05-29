@@ -1,0 +1,133 @@
+.anchor {
+  --pixel-size: 2px;
+  --main-color: #4a90e2;
+  --highlight: #6aa8ff;
+  --shadow: #2c6cb0;
+  --active-color: #ff6a6a;
+  
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  font-family: 'Ark Pixel', 'Press Start 2P', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  z-index: 1000;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 8px 0;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    calc(var(--pixel-size) * 2) calc(var(--pixel-size) * 2) 0 var(--shadow),
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow);
+  border: 1px solid #000;
+}
+
+.anchorLinks {
+  padding: 0 12px 0 24px;
+}
+
+.anchorIndicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+}
+
+.indicatorLine {
+  position: absolute;
+  left: 7px;
+  top: 0;
+  width: var(--pixel-size);
+  height: 100%;
+  background: #aaa;
+  transition: height 0.3s ease, top 0.3s ease;
+}
+
+.indicatorLine.active {
+  background: var(--active-color);
+  box-shadow: 0 0 4px var(--active-color);
+}
+
+.linkContainer {
+  margin-bottom: 8px;
+}
+
+.link {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 4px 8px;
+  position: relative;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-size: 12px;
+}
+
+.link:hover {
+  color: var(--main-color);
+  text-shadow: 1px 1px 0 var(--shadow);
+}
+
+.link:active {
+  transform: translate(1px, 1px);
+}
+
+.link.active {
+  color: var(--active-color);
+  font-weight: bold;
+}
+
+.linkBullet {
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #aaa;
+  box-shadow: 
+    calc(var(--pixel-size) * 1) calc(var(--pixel-size) * 1) 0 var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.link.active .linkBullet {
+  background: var(--active-color);
+  box-shadow: 
+    0 0 0 2px white,
+    0 0 0 4px var(--active-color),
+    calc(var(--pixel-size) * 1) calc(var(--pixel-size) * 1) 0 var(--shadow);
+}
+
+.linkChildren {
+  margin-top: 4px;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px dashed #aaa;
+}
+
+/* 滚动条像素风格 */
+.anchor::-webkit-scrollbar {
+  width: 8px;
+}
+
+.anchor::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  box-shadow: 
+    inset calc(var(--pixel-size) * 1) calc(var(--pixel-size) * 1) 0 #ccc;
+}
+
+.anchor::-webkit-scrollbar-thumb {
+  background: #888;
+  box-shadow: 
+    calc(var(--pixel-size) * 1) calc(var(--pixel-size) * 1) 0 #555;
+}
+
+.anchor::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

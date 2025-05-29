@@ -13,7 +13,7 @@ interface ButtonProps {
   size?: "sm" | "md" | "lg";
 }
 
-export const Button: FC<ButtonProps> = ({
+export const YiButton: FC<ButtonProps> = ({
   children,
   onClick,
   disabled = false,

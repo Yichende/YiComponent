@@ -1,6 +1,45 @@
 /* src/index.css */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+@font-face {
+  font-family: 'Ark Pixel';
+  src: url('/font/ark-pixel-10px-monospaced-zh_cn.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ark Pixel';
+  src: url('/font/ark-pixel-12px-monospaced-zh_cn.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ark Pixel';
+  src: url('/font/ark-pixel-16px-monospaced-zh_cn.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 添加字体加载状态类 */
+.font-loading body {
+  visibility: hidden;
+}
+
+.font-loaded body {
+  visibility: visible;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,7 +48,7 @@
 
 :root {
   /* 保留原有变量 */
-  font-family: 'Press Start 2P', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* 像素字体优先 */
+  font-family:  "Ark Pixel",'Press Start 2P', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* 像素字体优先 */
   line-height: 1.5;
   font-weight: 400;
 
@@ -40,6 +79,20 @@ body {
   min-height: 100vh;
   /* 移除重复的字体设置 */
   background-color: #242424; /* 添加默认背景色 */
+  font-size: 16px;
+}
+
+/* 确保所有元素继承字体 */
+*, *::before, *::after {
+  font-family: inherit;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  image-rendering: inherit;
+}
+
+/* 针对不同元素调整字体大小 */
+button, input, select, textarea {
+  font-size: 1rem; /* 保持基础大小 */
 }
 
 h1 {

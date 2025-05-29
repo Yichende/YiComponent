@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import { YiButton } from './Button';
 
-const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
-  component: Button,
+const meta: Meta<typeof YiButton> = {
+  title: 'Components/YiButton',
+  component: YiButton,
   tags: ['autodocs'],
   argTypes: {
     onClick: { action: 'clicked' },
@@ -12,7 +12,7 @@ const meta: Meta<typeof Button> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof YiButton>;
 
 export const Default: Story = {
   args: {
