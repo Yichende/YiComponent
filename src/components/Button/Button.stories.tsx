@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { YiButton } from './Button';
 
+
 const meta: Meta<typeof YiButton> = {
   title: 'Components/YiButton',
   component: YiButton,
@@ -32,7 +33,7 @@ export const Warning: Story = {
   args: {
     children: 'Warning Button',
     variant: "warning",
-    size: 'sm',
+    size: "md",
   },
 };
 

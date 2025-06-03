@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import styles from "./Button.module.css";
+import { Icon, IconName } from '../Icon/Icon';
 
 interface ButtonProps {
   children: ReactNode;
@@ -11,6 +12,8 @@ interface ButtonProps {
   variant?: "primary" | "warning";
   className?: string;
   size?: "sm" | "md" | "lg";
+  icon?: IconName;
+  iconPosition?: "left" | "right";
 }
 
 export const YiButton: FC<ButtonProps> = ({
@@ -23,7 +26,18 @@ export const YiButton: FC<ButtonProps> = ({
   variant = "primary",
   className = "",
   size = "md",
+  icon,
+  iconPosition = "left",
 }) => {
+
+  // 根据按钮尺寸设置图标尺寸
+  const iconSizeMap = {
+    sm: "sm",
+    md: "sm",
+    lg: "md",
+  } as const;
+  const iconSize = iconSizeMap[size];
+
   const isDisabled = disabled || isLoading;
   return (
     <button
@@ -47,7 +61,25 @@ export const YiButton: FC<ButtonProps> = ({
             {loadingText}
           </>
         ) : (
-          children
+          <>
+            {icon && iconPosition === "left" && (
+              <Icon 
+                name={icon} 
+                size={iconSize} 
+                className={styles.iconLeft} 
+                pixelSize={1}
+              />
+            )}
+            {children}
+            {icon && iconPosition === "right" && (
+              <Icon 
+                name={icon} 
+                size={iconSize} 
+                className={styles.iconRight} 
+                pixelSize={1}
+              />
+            )}
+          </>
         )}
       </span>
     </button>

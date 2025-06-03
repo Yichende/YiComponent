@@ -1,0 +1,25 @@
+.iconContainer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+
+.icon {
+  display: block;
+  image-rendering: pixelated;
+  filter: drop-shadow(
+    calc(var(--pixel-size, 1px) * 1) 
+    calc(var(--pixel-size, 1px) * 1) 
+    0 rgba(0, 0, 0, 0.5)
+  );
+}
+
+.iconContainer:hover {
+  transform: translateY(calc(-1 * var(--pixel-size, 1px)));
+}
+
+.iconContainer:active {
+  transform: translateY(calc(var(--pixel-size, 1px)));
+}
