@@ -22,7 +22,7 @@ export const AnchorLink: FC<AnchorLinkProps> = ({
   };
 
   return (
-    <div className={`${styles.linkContainer} ${active ? styles.active : ""}`}>
+    <div id={`link-${href}`} className={`${styles.linkContainer} ${active ? styles.active : ""}`}>
       <a
         href={`#${href}`}
         className={styles.link}

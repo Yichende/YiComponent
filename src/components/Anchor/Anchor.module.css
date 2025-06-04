@@ -6,6 +6,7 @@
   --active-color: #ff6a6a;
   
   position: fixed;
+  display: flex;
   top: 100px;
   right: 20px;
   font-family: 'Ark Pixel', 'Press Start 2P', monospace;
@@ -24,24 +25,21 @@
 
 .anchorLinks {
   padding: 0 12px 0 24px;
+  flex: 1;
 }
 
 .anchorIndicator {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 16px;
+  /* width: 1px; */
+  flex-shrink: 0;
+  position: relative;
 }
 
 .indicatorLine {
   position: absolute;
-  left: 7px;
-  top: 0;
+  left: 4px;
   width: var(--pixel-size);
-  height: 100%;
   background: #aaa;
-  transition: height 0.3s ease, top 0.3s ease;
+  transition: top 0.3s ease, height 0.5s ease;
 }
 
 .indicatorLine.active {
@@ -131,3 +129,4 @@
 .anchor::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+

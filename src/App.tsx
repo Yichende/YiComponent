@@ -174,6 +174,21 @@ function App() {
               <code>yarn add pixel-components</code>
             </div>
           </section>
+          <section
+            id="useExample"
+            style={{
+              height: "600px",
+              marginBottom: "40px",
+              backgroundColor: "#f0f0f0",
+              padding: "20px",
+            }}>
+            <h2>使用示例</h2>
+            <div
+              id="usage"
+              style={{ height: "250px", marginBottom: "20px" }}>
+              <h3>这里是使用示例</h3>
+            </div>
+          </section>
         </div>
       </div>
     </>
