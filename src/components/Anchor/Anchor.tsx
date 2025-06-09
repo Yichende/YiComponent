@@ -1,6 +1,7 @@
 import { FC, ReactNode, useState, useEffect, useRef } from "react";
 import styles from "./Anchor.module.css";
 import { AnchorLink } from "./AnchorLink";
+import { Icon } from "../Icon/Icon";
 import React from "react";
 
 interface AnchorProps {
@@ -27,6 +28,10 @@ export const Anchor: AnchorComponent = ({
   const indicatorRef = useRef<HTMLDivElement>(null);
   const [indicatorTop, setIndicatorTop] = useState(0);
   const [indicatorHeight, setIndicatorHeight] = useState(0);
+
+  // 动画
+  const [collapsed, setCollapsed] = useState(false);
+  const [isHiding, setIsHiding] = useState(false);
 
   // 递归获取所有 href id
   const getAllAnchorIds = (children: ReactNode): string[] => {
@@ -120,27 +125,65 @@ export const Anchor: AnchorComponent = ({
     });
   };
 
+  const toggleCollapse = () => {
+    if (!collapsed) {
+      setIsHiding(true);
+      setTimeout(() => {
+        setCollapsed(true);
+        setIsHiding(false);
+      }, 300);
+    } else {
+      // 展开
+      setCollapsed(false);
+    }
+  };
+
   return (
     <div
-      className={`${styles.anchor} ${className}`}
+      className={`${styles.anchorWrapper} ${collapsed ? styles.collapsed : ""}`}
       style={{ "--pixel-size": `${pixelSize}px` } as React.CSSProperties}>
-      <div className={styles.anchorIndicator}>
+      {/* collapsedButton */}
+      {collapsed && (
         <div
-          ref={indicatorRef}
-          className={`${styles.indicatorLine} ${
-            activeLink ? styles.active : ""
-          }`}
-          style={{
-            top: `${indicatorTop}px`,
-            height: `${indicatorHeight}px`,
-          }}
+          className={styles.collapsedButton}
+          onClick={toggleCollapse}
         />
-      </div>
-      <div
-        className={styles.anchorLinks}
-        ref={linksRef}>
-        {injectProps(children)}
-      </div>
+      )}
+
+      {(!collapsed || isHiding) && (
+        <div
+          className={`${styles.anchor} ${className} ${
+            isHiding ? styles.hiding : ""
+          }`}
+          style={{ "--pixel-size": `${pixelSize}px` } as React.CSSProperties}>
+          <div className={styles.anchorHeader}>
+            <Icon
+              name="backburger"
+              size="md"
+              color="#4e5969"
+              onClick={() => toggleCollapse()}
+              className={styles.collapseIcon}
+            />
+          </div>
+          <div className={styles.anchorIndicator}>
+            <div
+              ref={indicatorRef}
+              className={`${styles.indicatorLine} ${
+                activeLink ? styles.active : ""
+              }`}
+              style={{
+                top: `${indicatorTop}px`,
+                height: `${indicatorHeight}px`,
+              }}
+            />
+          </div>
+          <div
+            className={styles.anchorLinks}
+            ref={linksRef}>
+            {injectProps(children)}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

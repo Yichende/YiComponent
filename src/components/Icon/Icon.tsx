@@ -10,6 +10,7 @@ interface IconProps {
   className?: string
   pixelSize?: number
   onClick?: () => void
+  animation?: boolean
 }
 
 // 动态导入所有 svg 文件（作为字符串）
@@ -42,31 +43,26 @@ export const Icon: FC<IconProps> = ({
   className = "",
   pixelSize = 1,
   onClick,
+  animation = false
 }) => {
   const iconSvg = icons[name]
   const iconSize = sizeMap[size]
 
   return iconSvg ? (
     <div
-      className={`${styles.iconContainer} ${className}`}
+      className={`${styles.iconContainer} ${className} ${animation ? styles.animation : ''}`}
       onClick={onClick}
       style={
         {
           "--pixel-size": `${pixelSize}px`,
           width: `${iconSize}px`,
           height: `${iconSize}px`,
-          cursor: onClick ? "pointer" : "default",
+          cursor: onClick ? "pointer" : "inherit",
+          color
         } as React.CSSProperties
       }
+      dangerouslySetInnerHTML={{ __html: iconSvg }}
     >
-      <svg
-        width={iconSize}
-        height={iconSize}
-        fill={color}
-        className={styles.icon}
-        viewBox="0 0 24 24"
-        dangerouslySetInnerHTML={{ __html: iconSvg }}
-      />
     </div>
   ) : (
     <div

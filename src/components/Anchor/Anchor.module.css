@@ -1,3 +1,16 @@
+/* 动画样式 */
+.anchorWrapper {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  z-index: 1000;
+  transition: transform 0.4s ease-in-out, top 0.4s ease-in-out;
+}
+
+.anchorWrapper.collapsed {
+  transform: translateX(100%);
+}
+
 .anchor {
   --pixel-size: 2px;
   --main-color: #4a90e2;
@@ -5,9 +18,8 @@
   --shadow: #2c6cb0;
   --active-color: #ff6a6a;
   
-  position: fixed;
   display: flex;
-  top: 100px;
+  flex-direction: column;
   right: 20px;
   font-family: 'Ark Pixel', 'Press Start 2P', monospace;
   font-size: 12px;
@@ -23,13 +35,51 @@
   border: 1px solid #000;
 }
 
+.anchor.hiding {
+  transform: translateX(120%);
+  transition: transform 0.3s ease;
+}
+
+.anchorHeader {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px 8px;
+}
+
+.collapseIcon {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.collapseIcon:hover {
+  transform: scale(1.2);
+}
+
+.collapsedButton {
+  position: fixed;
+  right: -0.3em;
+  transform: translateX(0);
+  width: 1em;
+  height: 3em;
+  border-radius: 0.5em 0 0 0.5em;
+  background-color: #ff6a6a;
+  box-shadow: 0 0 4px rgba(255, 106, 106, 0.8);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+  opacity: 0.8;
+}
+
+.collapsedButton:hover {
+  transform: translateX(-0.3em);
+  opacity: 1;
+}
+
 .anchorLinks {
   padding: 0 12px 0 24px;
   flex: 1;
 }
 
 .anchorIndicator {
-  /* width: 1px; */
   flex-shrink: 0;
   position: relative;
 }

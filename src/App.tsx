@@ -8,12 +8,18 @@ function App() {
         variant="warning"
         size="md">
         中文TEST
+        <Icon
+          name="arrow-bar-down"
+          size="sm"
+          color="#fff"
+        />
       </YiButton>
       <div>
         <Icon
           name="lock"
+          animation
           size="sm"
-          color="#ff6a6a"
+          color="#fff"
         />
       </div>
 
