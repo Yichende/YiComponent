@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState, useEffect, useRef } from "react";
 import styles from "./Anchor.module.css";
 import { AnchorLink } from "./AnchorLink";
-import { Icon } from "../Icon/Icon";
+import { Icon } from "../index";
 import React from "react";
 
 interface AnchorProps {
@@ -102,8 +102,7 @@ export const Anchor: AnchorComponent = ({
   const handleLinkClick = (href: string) => {
     const target = document.getElementById(href);
     if (target) {
-      const offset =
-        target.getBoundingClientRect().top + window.scrollY - offsetTop;
+      const offset = target.getBoundingClientRect().top + window.scrollY - offsetTop;
       window.scrollTo({ top: offset, behavior: "smooth" });
       setActiveLink(href);
     }

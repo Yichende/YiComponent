@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import styles from "./Button.module.css";
-import { Icon, IconName } from '../Icon/Icon';
+import { Icon, IconName } from '../index';
 
 interface ButtonProps {
   children: ReactNode;

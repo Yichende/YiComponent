@@ -1,7 +1,8 @@
 import "./App.css";
-import { YiButton, Anchor } from "./components/index";
-import { Icon } from "./components/index";
+import { YiButton, Anchor, Icon, Breadcrumb } from "./components/index";
+
 function App() {
+
   return (
     <>
       <YiButton
@@ -21,6 +22,21 @@ function App() {
           size="sm"
           color="#fff"
         />
+      </div>
+
+      <div>
+        <Breadcrumb
+          pixelSize={2}
+          maxItems={5}>
+          <Breadcrumb.Item
+            icon="home"
+            href="/">
+            首页
+          </Breadcrumb.Item>
+          <Breadcrumb.Item href="/category">分类</Breadcrumb.Item>
+          <Breadcrumb.Item href="/category/detail">详情</Breadcrumb.Item>
+          <Breadcrumb.Item>当前页面</Breadcrumb.Item>
+        </Breadcrumb>
       </div>
 
       <div className="documentation">
@@ -145,7 +161,7 @@ function App() {
           />
         </Anchor>
 
-        <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px", color: "black"}}>
           <section
             id="introduction"
             style={{
@@ -154,7 +170,7 @@ function App() {
               backgroundColor: "#f0f0f0",
               padding: "20px",
             }}>
-            <h2>介绍</h2>
+            <div style={{fontSize: "24px"}}>介绍</div>
             <p>欢迎使用像素风格组件库...</p>
           </section>
 

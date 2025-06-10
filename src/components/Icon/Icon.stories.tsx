@@ -53,7 +53,7 @@ export const AllIcons: Story = {
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 80px)', gap: '16px' }}>
       {iconNames.map((name) => (
         <div key={name} style={{ textAlign: 'center' }}>
-          <Icon {...args} name={name} />
+          <Icon {...args} name={name} color="#fff" />
           <div style={{ fontSize: 12 }}>{name}</div>
         </div>
       ))}
