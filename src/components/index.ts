@@ -7,3 +7,5 @@ export { Icon } from './Icon/Icon'
 export type { IconName } from './Icon/Icon'
 
 export { Breadcrumb } from './Breadcrumb/Breadcrumb'
+export { Dropdown, DropdownItem } from './Dropdown/Dropdown';
+

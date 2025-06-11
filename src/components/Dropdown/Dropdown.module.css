@@ -1,0 +1,151 @@
+.dropdown {
+  --pixel-size: 2px;
+  --main-color: #4a90e2;
+  --highlight: #6aa8ff;
+  --shadow: #2c6cb0;
+  --current-color: #e24a4a;
+  --separator-color: #666;
+  --menu-bg: #fff;
+  --item-hover: #f8f8f8;
+  --border-color: #000;
+
+  position: relative;
+  display: inline-block;
+  font-family: "Press Start 2P", "Ark Pixel", monospace;
+  font-size: 12px;
+  z-index: 100;
+}
+
+/* 触发按钮样式：类似 .link 样式 */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  color: var(--main-color);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  text-shadow: 2px 4px 4px var(--shadow);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.trigger:hover:not(.disabled) {
+  color: var(--highlight);
+  transform: translate(1px, 1px);
+  text-shadow: none;
+}
+
+.trigger:active:not(.disabled) {
+  transform: translate(2px, 2px);
+  text-shadow: none;
+}
+
+.arrowIcon {
+  margin-left: 6px;
+  transition: transform 0.2s ease;
+}
+
+/* 菜单弹出层 */
+.menu {
+  position: absolute;
+  font-size: 10px;
+  background-color: var(--menu-bg);
+  color: var(--main-color);
+  border: 1px solid var(--border-color);
+  box-shadow:
+    calc(var(--pixel-size)) calc(var(--pixel-size)) 0 var(--shadow);
+  padding: 6px 0;
+  margin-top: 6px;
+  z-index: 100;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* 菜单定位 */
+.bottomLeft {
+  top: 100%;
+  left: 0;
+}
+
+.bottomRight {
+  top: 100%;
+  right: 0;
+}
+
+.topLeft {
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 6px;
+  margin-top: 0;
+}
+
+.topRight {
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 6px;
+  margin-top: 0;
+}
+
+/* 菜单项 */
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 10px;
+  font-family: inherit;
+  gap: 6px;
+  color: var(--main-color);
+  text-decoration: none;
+  text-shadow: 2px 4px 4px var(--shadow);
+  transition: all 0.1s ease;
+}
+
+.item:hover:not(.disabled) {
+  background-color: var(--current-color);
+  color: var(--item-hover);
+  transform: none;
+  text-shadow: none;
+}
+
+.item:hover:not(.disabled) .itemIcon {
+  filter: brightness(0) invert(1);
+}
+
+.item:active:not(.disabled) {
+  transform: translate(2px, 2px);
+  text-shadow: none;
+}
+
+.itemIconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 1em;
+}
+
+.itemIcon {
+  width: 1em;
+  height: 1em;
+}
+
+.itemText {
+  flex-grow: 1;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

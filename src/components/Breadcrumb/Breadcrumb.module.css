@@ -31,10 +31,14 @@
   display: flex;
   align-items: center;
   gap: 2px;
+  line-height: 1;
 }
 
 .itemIcon {
   margin-right: 4px;
+  display: inline-flex;
+  align-items: center;
+  height: 1em;
 }
 
 .link {
@@ -49,7 +53,9 @@
   transition: all 0.2s ease;
   position: relative;
   display: inline-block;
-  text-shadow: 2px 4px 4px var(--shadow); 
+  text-shadow: 2px 4px 4px var(--shadow);
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .link:hover {
@@ -68,6 +74,8 @@
   cursor: default;
   font-weight: bold;
   text-shadow: 2px 4px 4px var(--current-color);
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .current:hover {
@@ -83,6 +91,44 @@
   display: inline-flex;
   align-items: center;
   line-height: 1;
+}
+
+
+/* 下拉菜单相关样式 */
+.overflowDropdown {
+  display: inline-flex;
+  margin: 0 4px;
+  align-items: center;
+}
+
+/* 调整下拉菜单在面包屑中的样式 */
+.breadcrumb .dropdown {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.breadcrumb .dropdown .trigger {
+  padding: 2px 6px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 
+    calc(var(--pixel-size) * 1) calc(var(--pixel-size) * 1) 0 var(--shadow);
+}
+
+.breadcrumb .dropdown .menu {
+  min-width: auto;
+  max-width: 160px;
+  width: max-content;
+  font-size: 10px;
+  padding: 4px 0;
+}
+
+/* 确保分隔符对齐 */
+.breadcrumb .separator {
+  display: inline-flex;
+  align-items: center;
 }
 
 /* 响应式设计 */

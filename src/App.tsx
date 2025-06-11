@@ -27,13 +27,14 @@ function App() {
       <div>
         <Breadcrumb
           pixelSize={2}
-          maxItems={5}>
+          maxItems={2}>
+            
           <Breadcrumb.Item
             icon="home"
             href="/">
             首页
           </Breadcrumb.Item>
-          <Breadcrumb.Item href="/category">分类</Breadcrumb.Item>
+          <Breadcrumb.Item icon="home" href="/category">分类</Breadcrumb.Item>
           <Breadcrumb.Item href="/category/detail">详情</Breadcrumb.Item>
           <Breadcrumb.Item>当前页面</Breadcrumb.Item>
         </Breadcrumb>
