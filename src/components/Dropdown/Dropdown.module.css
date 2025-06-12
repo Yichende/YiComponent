@@ -13,7 +13,6 @@
   display: inline-block;
   font-family: "Press Start 2P", "Ark Pixel", monospace;
   font-size: 12px;
-  z-index: 100;
 }
 
 /* 触发按钮样式：类似 .link 样式 */
@@ -68,11 +67,13 @@
 .bottomLeft {
   top: 100%;
   left: 0;
+  transform: translateX(-40%);
 }
 
 .bottomRight {
   top: 100%;
   right: 0;
+  transform: translateX(40%);
 }
 
 .topLeft {
@@ -80,6 +81,7 @@
   left: 0;
   margin-bottom: 6px;
   margin-top: 0;
+  transform: translateX(-40%);
 }
 
 .topRight {
@@ -87,6 +89,21 @@
   right: 0;
   margin-bottom: 6px;
   margin-top: 0;
+  transform: translateX(40%);
+}
+
+.bottomCenter {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.topCenter {
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 6px;
+  transform: translateX(-50%);
 }
 
 /* 菜单项 */
@@ -106,6 +123,7 @@
   text-decoration: none;
   text-shadow: 2px 4px 4px var(--shadow);
   transition: all 0.1s ease;
+  border: none;
 }
 
 .item:hover:not(.disabled) {

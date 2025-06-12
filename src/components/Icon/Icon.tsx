@@ -45,6 +45,7 @@ export const Icon: FC<IconProps> = ({
   onClick,
   animation = false
 }) => {
+  if (!name) return null;
   const iconSvg = icons[name]
   const iconSize = sizeMap[size]
 

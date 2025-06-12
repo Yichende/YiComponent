@@ -117,7 +117,7 @@ export const Breadcrumb: BreadcrumbComponent = ({
       <li key="overflowed" className={styles.item}>
         <Dropdown
           trigger={<span className={styles.overflowDropdown}>{overflowedIndicator}</span>}
-          position="bottom-left"
+          position="bottom-center"
         >
           {overflowed.map((item, index) => (
             <DropdownItem

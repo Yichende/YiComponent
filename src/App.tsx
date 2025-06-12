@@ -1,10 +1,42 @@
 import "./App.css";
-import { YiButton, Anchor, Icon, Breadcrumb } from "./components/index";
+import { YiButton, Anchor, Icon, Breadcrumb, Menu } from "./components/index";
 
 function App() {
-
   return (
     <>
+      <Menu
+        mode="horizontal"
+        pixelSize={2}>
+        <Menu.Item icon="home">首页</Menu.Item>
+        <Menu.SubMenu
+          title="项目"
+          icon="folder">
+          <Menu.Item icon="game">游戏开发</Menu.Item>
+          <Menu.Item icon="web">网站设计</Menu.Item>
+          <Menu.Item icon="mobile">移动应用</Menu.Item>
+          <Menu.Item icon="game">游戏开发</Menu.Item>
+          <Menu.Item icon="web">网站设计</Menu.Item>
+          <Menu.Item icon="mobile">移动应用</Menu.Item>
+          <Menu.Item icon="game">游戏开发</Menu.Item>
+          <Menu.Item icon="web">网站设计</Menu.Item>
+          <Menu.Item icon="mobile">移动应用</Menu.Item>
+          <Menu.Item icon="game">游戏开发</Menu.Item>
+          <Menu.Item icon="web">网站设计</Menu.Item>
+          <Menu.Item icon="mobile">移动应用</Menu.Item>
+          <Menu.Item icon="game">游戏开发</Menu.Item>
+          <Menu.Item icon="web">网站设计</Menu.Item>
+          <Menu.Item icon="mobile">移动应用</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.SubMenu
+          title="资源"
+          icon="file">
+          <Menu.Item icon="image">图片素材</Menu.Item>
+          <Menu.Item icon="music">音频资源</Menu.Item>
+          <Menu.Item icon="code">代码片段</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.Item>设置</Menu.Item>
+        <Menu.Item icon="user">个人中心</Menu.Item>
+      </Menu>
       <YiButton
         variant="warning"
         size="md">
@@ -28,13 +60,16 @@ function App() {
         <Breadcrumb
           pixelSize={2}
           maxItems={2}>
-            
           <Breadcrumb.Item
             icon="home"
             href="/">
             首页
           </Breadcrumb.Item>
-          <Breadcrumb.Item icon="home" href="/category">分类</Breadcrumb.Item>
+          <Breadcrumb.Item
+            icon="home"
+            href="/category">
+            分类
+          </Breadcrumb.Item>
           <Breadcrumb.Item href="/category/detail">详情</Breadcrumb.Item>
           <Breadcrumb.Item>当前页面</Breadcrumb.Item>
         </Breadcrumb>
@@ -162,7 +197,13 @@ function App() {
           />
         </Anchor>
 
-        <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px", color: "black"}}>
+        <div
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "20px",
+            color: "black",
+          }}>
           <section
             id="introduction"
             style={{
@@ -171,7 +212,7 @@ function App() {
               backgroundColor: "#f0f0f0",
               padding: "20px",
             }}>
-            <div style={{fontSize: "24px"}}>介绍</div>
+            <div style={{ fontSize: "24px" }}>介绍</div>
             <p>欢迎使用像素风格组件库...</p>
           </section>
 

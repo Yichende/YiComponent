@@ -40,18 +40,24 @@ export const Disabled: Story = {
 
 export const Positioned: Story = {
   render: () => (
-    <div style={{ padding: 50, display: "flex", gap: 40 }}>
-      <Dropdown trigger={<span>左下</span>} position="bottom-left">
-        <DropdownItem>选项1</DropdownItem>
+    <div style={{ padding: 50, display: "flex", gap: 20 }}>
+      <Dropdown trigger={"左下"} position="bottom-left">
+        <DropdownItem>选项A</DropdownItem>
       </Dropdown>
-      <Dropdown trigger={<span>右下</span>} position="bottom-right">
-        <DropdownItem>选项2</DropdownItem>
+      <Dropdown trigger={"右下"} position="bottom-right">
+        <DropdownItem>选项B</DropdownItem>
       </Dropdown>
-      <Dropdown trigger={<span>左上</span>} position="top-left">
-        <DropdownItem>选项3</DropdownItem>
+      <Dropdown trigger={"左上"} position="top-left">
+        <DropdownItem>选项C</DropdownItem>
       </Dropdown>
-      <Dropdown trigger={<span>右上</span>} position="top-right">
-        <DropdownItem>选项4</DropdownItem>
+      <Dropdown trigger={"右上"} position="top-right">
+        <DropdownItem>选项D</DropdownItem>
+      </Dropdown>
+      <Dropdown trigger={"下方"} position="bottom-center">
+        <DropdownItem>选项E</DropdownItem>
+      </Dropdown>
+      <Dropdown trigger={"上方"} position="top-center">
+        <DropdownItem>选项F</DropdownItem>
       </Dropdown>
     </div>
   ),

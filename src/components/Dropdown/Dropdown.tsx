@@ -5,7 +5,7 @@ import { Icon, IconName } from "../index";
 interface DropdownProps {
   children: ReactNode;
   trigger: ReactNode;
-  position?: "bottom-left" | "bottom-right" | "top-left" | "top-right";
+  position?: "bottom-left" | "bottom-right" | "top-left" | "top-right" | "bottom-center" | "top-center";
   className?: string;
   pixelSize?: number;
   disabled?: boolean;
@@ -64,8 +64,12 @@ export const Dropdown: FC<DropdownProps> = ({
         return styles.topLeft;
       case "top-right":
         return styles.topRight;
-      default:
+      case "bottom-left":
         return styles.bottomLeft;
+      case "top-center":
+        return styles.topCenter;
+      default:
+        return styles.bottomCenter;
     }
   };
 
@@ -114,7 +118,11 @@ export const DropdownItem: FC<DropdownItemProps> = ({
     <>
       <span className={styles.itemIconWrapper}>
         {icon && (
-          <Icon name={icon} size="sm" className={styles.itemIcon} />
+          <Icon
+            name={icon}
+            size="sm"
+            className={styles.itemIcon}
+          />
         )}
       </span>
       <span className={styles.itemText}>{children}</span>
@@ -127,8 +135,7 @@ export const DropdownItem: FC<DropdownItemProps> = ({
       <a
         href={href}
         className={`${styles.item} ${className}`}
-        onClick={onClick}
-      >
+        onClick={onClick}>
         {content}
       </a>
     );
@@ -136,9 +143,10 @@ export const DropdownItem: FC<DropdownItemProps> = ({
 
   return (
     <div
-      className={`${styles.item} ${className} ${disabled ? styles.disabled : ""}`}
-      onClick={disabled ? undefined : onClick}
-    >
+      className={`${styles.item} ${className} ${
+        disabled ? styles.disabled : ""
+      }`}
+      onClick={disabled ? undefined : onClick}>
       {content}
     </div>
   );
