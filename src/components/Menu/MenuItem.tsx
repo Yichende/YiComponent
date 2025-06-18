@@ -9,6 +9,7 @@ export interface MenuItemProps {
   active?: boolean;
   onClick?: () => void;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const MenuItem: FC<MenuItemProps> = ({
@@ -26,7 +27,7 @@ export const MenuItem: FC<MenuItemProps> = ({
       } ${disabled ? styles.disabled : ""}`}
       onClick={disabled ? undefined : onClick}
       aria-disabled={disabled}>
-      <div className={`${styles.itemContent}`} >
+      <div className={`${styles.itemContent}`}>
         {icon && (
           <Icon
             name={icon}
