@@ -1,0 +1,244 @@
+/* Pagination.module.css */
+.pagination {
+  --pixel-size: 2px;
+  --main-color: #4a90e2;
+  --highlight: #6aa8ff;
+  --shadow: #2c6cb0;
+  --border-color: #000;
+  --menu-bg: #fff;
+  --item-hover: #f0f0f0;
+  --active-color: #e24a4a;
+  
+  font-family: 'Press Start 2P', 'Ark Pixel', monospace;
+  font-size: 12px;
+  margin: 20px 0;
+}
+
+/* 迷你版样式 */
+.pagination.small {
+  font-size: 10px;
+}
+
+.pagination.small .paginationButton {
+  min-width: 24px;
+  height: 24px;
+}
+
+.pagination.small .pageButton {
+  width: 24px;
+  height: 24px;
+}
+
+.pagination.small .miniInfo {
+  font-size: 10px;
+  padding: 0 12px;
+  color: var(--main-color);
+}
+
+.pagination.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.paginationContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.paginationButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  background-color: var(--menu-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow),
+    calc(var(--pixel-size) * 2) calc(var(--pixel-size) * 2) 0 var(--shadow);
+  color: var(--main-color);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.paginationButton:hover:not(:disabled) {
+  background-color: var(--item-hover);
+  transform: translate(1px, 1px);
+  box-shadow: 
+    calc(var(--pixel-size) * 1.5) calc(var(--pixel-size) * 1.5) 0 var(--shadow);
+}
+
+.paginationButton:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 
+    calc(var(--pixel-size) * 0.5) calc(var(--pixel-size) * 0.5) 0 var(--shadow);
+}
+
+.paginationButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.buttonContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pages {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 8px;
+}
+
+.pageItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  background-color: var(--menu-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow),
+    calc(var(--pixel-size) * 2) calc(var(--pixel-size) * 2) 0 var(--shadow);
+  color: var(--main-color);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  font-family: inherit;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageButton.small {
+  width: 24px;
+  height: 24px;
+  font-size: 10px;
+}
+
+.pageButton:hover:not(:disabled) {
+  background-color: var(--item-hover);
+  transform: translate(1px, 1px);
+  box-shadow: 
+    calc(var(--pixel-size) * 1.5) calc(var(--pixel-size) * 1.5) 0 var(--shadow);
+}
+
+.pageButton:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 
+    calc(var(--pixel-size) * 0.5) calc(var(--pixel-size) * 0.5) 0 var(--shadow);
+}
+
+.pageItem.active .pageButton {
+  background-color: var(--active-color);
+  color: white;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  transform: translate(2px, 2px);
+  box-shadow: 
+    calc(var(--pixel-size) * 0.5) calc(var(--pixel-size) * 0.5) 0 var(--shadow);
+}
+
+.pageItem.active .pageButton:hover:not(:disabled) {
+  background-color: #e24a4a;
+  transform: translate(2px, 2px);
+  box-shadow: 
+    calc(var(--pixel-size) * 0.5) calc(var(--pixel-size) * 0.5) 0 var(--shadow);
+}
+
+.ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--main-color);
+}
+
+.sizeChanger,
+.quickJumper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 12px;
+}
+
+.sizeLabel,
+.jumperLabel,
+.jumperSuffix {
+  color: var(--main-color);
+}
+
+.sizeSelect {
+  background-color: var(--menu-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow);
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--main-color);
+  cursor: pointer;
+  height: 32px;
+}
+
+.sizeSelect:focus {
+  outline: none;
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow),
+    0 0 0 2px var(--highlight);
+}
+
+.jumperInput {
+  background-color: var(--menu-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow);
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--main-color);
+  width: 50px;
+  height: 32px;
+  text-align: center;
+}
+
+.jumperInput:focus {
+  outline: none;
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow),
+    0 0 0 2px var(--highlight);
+}
+
+.total {
+  margin-left: 12px;
+  color: var(--main-color);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .paginationContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .sizeChanger,
+  .quickJumper,
+  .total {
+    margin-top: 12px;
+  }
+  
+  .pagination.small .paginationContainer {
+    flex-wrap: nowrap;
+  }
+}

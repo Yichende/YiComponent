@@ -1,25 +1,25 @@
 /* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 @font-face {
-  font-family: 'Ark Pixel';
-  src: url('/font/ark-pixel-10px-monospaced-zh_cn.woff2') format('woff2');
+  font-family: "Ark Pixel";
+  src: url("/font/ark-pixel-10px-monospaced-zh_cn.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Ark Pixel';
-  src: url('/font/ark-pixel-12px-monospaced-zh_cn.woff2') format('woff2');
+  font-family: "Ark Pixel";
+  src: url("/font/ark-pixel-12px-monospaced-zh_cn.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Ark Pixel';
-  src: url('/font/ark-pixel-16px-monospaced-zh_cn.woff2') format('woff2');
+  font-family: "Ark Pixel";
+  src: url("/font/ark-pixel-16px-monospaced-zh_cn.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -36,19 +36,25 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-rendering: optimizeSpeed;
 }
 
 :root {
   /* 保留原有变量 */
-  font-family:  "Ark Pixel",'Press Start 2P', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* 像素字体优先 */
+  font-family: "Ark Pixel", "Press Start 2P", Inter, system-ui, Avenir,
+    Helvetica, Arial, sans-serif; /* 像素字体优先 */
   line-height: 1.5;
   font-weight: 400;
 
@@ -67,6 +73,9 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  border-bottom: 1px dotted currentColor;
 }
 a:hover {
   color: #535bf2;
@@ -83,7 +92,9 @@ body {
 }
 
 /* 确保所有元素继承字体 */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   font-family: inherit;
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
@@ -91,20 +102,23 @@ body {
 }
 
 /* 针对不同元素调整字体大小 */
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-size: 1rem; /* 保持基础大小 */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 /* ===== 添加像素风格全局重置 ===== */
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit; /* 继承像素字体 */
+  font-size: 12px;
   -webkit-font-smoothing: none;
   image-rendering: pixelated;
+  line-height: 1.4;
 }
 
 /* 像素风格链接 */
@@ -114,11 +128,39 @@ a {
 }
 
 /* 像素风格标题 */
-h1, h2, h3, h4, h5, h6 {
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
-  letter-spacing: -1px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  all: unset;
+  font-family: "Ark Pixel", "Press Start 2P", monospace;
+  display: block;
+  line-height: 1.4;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
 }
-
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 18px;
+}
+h3 {
+  font-size: 16px;
+}
+h4 {
+  font-size: 14px;
+}
+h5 {
+  font-size: 12px;
+}
+h6 {
+  font-size: 10px;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -129,4 +171,3 @@ h1, h2, h3, h4, h5, h6 {
     color: #747bff;
   }
 }
-

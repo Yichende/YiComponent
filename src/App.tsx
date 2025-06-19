@@ -1,7 +1,18 @@
+import { useState } from "react";
 import "./App.css";
-import { YiButton, Anchor, Icon, Breadcrumb, Menu } from "./components/index";
+import { YiButton, Anchor, Icon, Breadcrumb, Menu, Pagination } from "./components/index";
 
 function App() {
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const totalItems = 87;
+
+  const handlePageChange = (page: number, size: number) => {
+    setCurrentPage(page);
+    setPageSize(size);
+    console.log(`Page changed to: ${page}, Page size: ${size}`);
+  };
   return (
     <>
       <Menu
@@ -55,6 +66,15 @@ function App() {
           color="#fff"
         />
       </div>
+
+      <Pagination 
+          current={currentPage} 
+          total={totalItems} 
+          pageSize={pageSize}
+          onChange={handlePageChange}
+          showSizeChanger
+          showQuickJumper
+        />
 
       <div>
         <Breadcrumb
@@ -212,7 +232,7 @@ function App() {
               backgroundColor: "#f0f0f0",
               padding: "20px",
             }}>
-            <div style={{ fontSize: "24px" }}>介绍</div>
+            <h1>介绍</h1>
             <p>欢迎使用像素风格组件库...</p>
           </section>
 
