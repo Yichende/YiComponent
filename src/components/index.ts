@@ -11,3 +11,4 @@ export { Dropdown, DropdownItem } from './Dropdown/Dropdown';
 
 export { Menu } from './Menu/Menu'
 export { Pagination } from './Pagination/Pagination'
+export { Steps } from './Steps/Steps'

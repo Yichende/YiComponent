@@ -1,0 +1,220 @@
+.steps {
+  --pixel-size: 2px;
+  --main-color: #4a90e2;
+  --highlight: #6aa8ff;
+  --shadow: #2c6cb0;
+  --text-color: #333;
+  --border-color: #000;
+  --menu-bg: #fff;
+  --wait-color: #ccc;
+  --finish-color: #52c41a;
+  --error-color: #f5222d;
+  --active-color: #e24a4a;
+  
+  display: flex;
+  font-family: 'Press Start 2P', 'Ark Pixel', monospace;
+  font-size: 12px;
+  width: 100%;
+}
+
+.steps.horizontal {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.steps.vertical {
+  flex-direction: column;
+}
+
+.steps.small {
+  font-size: 10px;
+}
+
+.step {
+  position: relative;
+  flex: 1;
+  min-width: 100px;
+}
+
+.steps.horizontal .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.steps.vertical .step {
+  display: flex;
+  min-height: 80px;
+}
+
+.stepContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.steps.vertical .stepContainer {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.iconContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.steps.horizontal .iconContainer {
+  margin-bottom: 8px;
+}
+
+.steps.vertical .iconContainer {
+  margin-right: 16px;
+}
+
+.stepIcon {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-color);
+  background-color: var(--menu-bg);
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--text-color);
+  z-index: 1;
+}
+
+.steps.small .stepIcon {
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+}
+
+.stepIcon.process {
+  background-color: var(--active-color);
+  color: white;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  border-color: #000;
+}
+
+.stepIcon.finish {
+  background-color: var(--finish-color);
+  color: white;
+  border-color: #000;
+}
+
+.stepIcon.error {
+  background-color: var(--error-color);
+  color: white;
+  border-color: #000;
+}
+
+.customIcon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.steps.small .customIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.stepTail {
+  position: absolute;
+  background-color: var(--wait-color);
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow);
+}
+
+.stepTail.horizontal {
+  width: calc(100% - 24px);
+  height: 2px;
+  top: 11px;
+  left: calc(50% + 12px);
+}
+
+.stepTail.vertical {
+  width: 2px;
+  height: calc(100% - 24px);
+  top: 24px;
+  left: 11px;
+}
+
+.steps.small .stepTail.horizontal {
+  top: 9px;
+}
+
+.steps.small .stepTail.vertical {
+  top: 20px;
+}
+
+.step.finish .stepTail {
+  background-color: var(--finish-color);
+}
+
+.step.process .stepTail {
+  background-color: var(--active-color);
+}
+
+.step.error .stepTail {
+  background-color: var(--error-color);
+}
+
+.content {
+  text-align: center;
+  /* padding: 0 8px; */
+}
+
+.steps.vertical .content {
+  text-align: left;
+  padding: 0;
+}
+
+.stepTitle {
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.step.wait .stepTitle {
+  color: var(--wait-color);
+}
+
+.step.process .stepTitle {
+  color: var(--active-color);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.step.finish .stepTitle {
+  color: var(--finish-color);
+}
+
+.step.error .stepTitle {
+  color: var(--error-color);
+}
+
+.stepDescription {
+  font-size: 10px;
+  color: var(--text-color);
+  line-height: 1.4;
+  white-space: normal;
+  word-break: normal;
+  width: 100%;
+}
+
+.steps.small .stepDescription {
+  font-size: 8px;
+}
+
+.step.wait .stepDescription {
+  color: var(--wait-color);
+}

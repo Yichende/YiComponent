@@ -1,9 +1,16 @@
 import { useState } from "react";
 import "./App.css";
-import { YiButton, Anchor, Icon, Breadcrumb, Menu, Pagination } from "./components/index";
+import {
+  YiButton,
+  Anchor,
+  Icon,
+  Breadcrumb,
+  Menu,
+  Pagination,
+  Steps,
+} from "./components/index";
 
 function App() {
-
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const totalItems = 87;
@@ -66,15 +73,33 @@ function App() {
           color="#fff"
         />
       </div>
-
-      <Pagination 
-          current={currentPage} 
-          total={totalItems} 
-          pageSize={pageSize}
-          onChange={handlePageChange}
-          showSizeChanger
-          showQuickJumper
+      <Steps current={2}>
+        <Steps.Step
+          title="第一步"
+          description="完成基本信息填写"
         />
+        <Steps.Step
+          title="第二步"
+          description="验证账户信息"
+        />
+        <Steps.Step
+          title="第三步"
+          description="设置偏好选项"
+        />
+        <Steps.Step
+          title="完成"
+          description="创建账户成功"
+        />
+      </Steps>
+
+      <Pagination
+        current={currentPage}
+        total={totalItems}
+        pageSize={pageSize}
+        onChange={handlePageChange}
+        showSizeChanger
+        showQuickJumper
+      />
 
       <div>
         <Breadcrumb
