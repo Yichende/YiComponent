@@ -36,7 +36,7 @@ const meta: Meta<typeof Icon> = {
   args: {
     name: iconNames[0],
     size: 'md',
-    color: '#000000',
+    color: '#fff',
     pixelSize: 1,
   },
 }
@@ -54,7 +54,7 @@ export const AllIcons: Story = {
       {iconNames.map((name) => (
         <div key={name} style={{ textAlign: 'center' }}>
           <Icon {...args} name={name} color="#fff" />
-          <div style={{ fontSize: 12 }}>{name}</div>
+          <div style={{ fontSize: 12, color: "#fff" }}>{name}</div>
         </div>
       ))}
     </div>

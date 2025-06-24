@@ -1,0 +1,215 @@
+:root {
+  --tab-bg: #fff;
+  --tab-border: #000;
+  --tab-active-bg: #e24a4a;
+  --tab-hover-bg: #f0f0f0;
+  --tab-color: #4a90e2;
+  --tab-active-color: #fff;
+  --tab-disabled-color: #aaa;
+  --tab-shadow: #2c6cb0;
+}
+
+/* 通用容器 */
+.tabs {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* tab 列表 */
+.tabList {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  scroll-behavior: smooth;
+  color: var(--tab-color);
+  /* border-bottom: 2px solid var(--tab-border); */
+  background-color: var(--tab-bg);
+  flex-wrap: nowrap;
+  gap: 1px;
+}
+
+.tabList::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  position: relative;
+  user-select: none;
+  text-align: center;
+  white-space: nowrap;
+  max-width: 160px;
+  flex-shrink: 0;
+}
+
+.tab:last-child {
+  border-right: none;
+}
+
+.tabIcon {
+  margin-right: 6px;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+
+.tabText {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 40px;
+  max-width: 100%;
+}
+
+/* 激活样式 */
+.tab.active {
+  background-color: var(--tab-active-bg);
+  color: var(--tab-active-color);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* hover 效果 */
+.tab:hover:not(.active):not(.disabled) {
+  background-color: var(--tab-hover-bg);
+  transform: translate(1px, 1px);
+}
+
+/* 禁用样式 */
+.tab.disabled {
+  cursor: not-allowed;
+  color: var(--tab-disabled-color);
+  opacity: 0.6;
+}
+
+/* tab 内容 */
+.tabContent {
+  padding: 16px;
+  background-color: var(--tab-bg);
+  width: 100%;
+  
+}
+
+/* 卡片样式 */
+.card .tabList {
+  border-bottom: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.card .tab {
+  background-color: var(--tab-bg);
+}
+
+/* 顶部 tab */
+.card.top .tab {
+  border: 1px solid var(--tab-border);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+}
+
+/* 底部 tab */
+.card.bottom .tab {
+  border: 1px solid var(--tab-border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+/* 左侧 tab */
+.card.left .tab {
+  border: 1px solid var(--tab-border);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+}
+
+/* 右侧 tab */
+.card.right .tab {
+  border: 1px solid var(--tab-border);
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+}
+
+.card .tab.active {
+  background-color: var(--tab-active-bg);
+  color: var(--tab-active-color);
+}
+
+
+
+/* 修复各个方向下，tabContent与tab之间的布局连接 */
+.card.left .tabContent,
+.card.right .tabContent {
+  margin-left: -1px;
+}
+.card.bottom .tabContent {
+  margin-top: -1px;
+}
+.card.top .tabContent {
+  margin-top: -1px;
+}
+
+
+/* 小尺寸样式 */
+.small .tab {
+  padding: 4px 8px;
+  font-size: 10px;
+}
+
+/* 居中 */
+.centered .tabList {
+  justify-content: center;
+}
+
+/* 方向控制 */
+.top {
+  flex-direction: column;
+}
+
+.bottom {
+  flex-direction: column-reverse;
+}
+
+.left {
+  flex-direction: row;
+}
+
+.left .tabList {
+  flex-direction: column;
+  border-bottom: none;
+}
+
+.right {
+  flex-direction: row-reverse;
+}
+
+.right .tabList {
+  flex-direction: column;
+  border-bottom: none;
+}
+
+/* tabPane 内容 */
+.tabPane {
+  animation: fadeIn 0.2s ease;
+}
+
+/* 动画 */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

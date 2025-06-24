@@ -8,17 +8,24 @@ import {
   Menu,
   Pagination,
   Steps,
+  Tabs,
 } from "./components/index";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const totalItems = 87;
+  const [activeTab, setActiveTab] = useState("1");
 
   const handlePageChange = (page: number, size: number) => {
     setCurrentPage(page);
     setPageSize(size);
     console.log(`Page changed to: ${page}, Page size: ${size}`);
+  };
+
+  const handleTabChange = (key: string) => {
+    setActiveTab(key);
+    console.log(`切换到标签页: ${key}`);
   };
   return (
     <>
@@ -100,8 +107,112 @@ function App() {
         showSizeChanger
         showQuickJumper
       />
+      <div style={{display: 'inline', minWidth: "70vw", height: "40vh"}}>
+        <Tabs
+          activeKey={activeTab}
+          onChange={handleTabChange}
+          tabPosition="top"
+          type="line">
+          <Tabs.TabPane
+            tab="标签一"
+            key="1">
+            <div className="tab-content">
+              <h3>标签一内容</h3>
+              <p>这是第一个标签页的内容，展示了基本的像素风格设计。</p>
+              <div className="pixel-grid">
+                {[...Array(16)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="pixel"
+                  />
+                ))}
+              </div>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="标签二"
+            key="2">
+            <div>
+              <h3>标签二内容</h3>
+              <p>这是第二个标签页的内容，包含一些像素艺术元素。</p>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="禁用标签"
+            key="3"
+            disabled>
+            <div className="tab-content">
+              <h3>禁用标签内容</h3>
+              <p>这个标签页被禁用了，无法点击。</p>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="Test"
+            key="4">
+            <div>
+              <h3>溢出测试</h3>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="Test"
+            key="5">
+            <div>
+              <h3>溢出测试</h3>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="Test"
+            key="6">
+            <div>
+              <h3>溢出测试</h3>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="Test"
+            key="7">
+            <div>
+              <h3>溢出测试</h3>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="Test"
+            key="8">
+            <div>
+              <h3>溢出测试</h3>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="Test"
+            key="9">
+            <div>
+              <h3>溢出测试</h3>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="Test"
+            key="10">
+            <div>
+              <h3>溢出测试</h3>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="Test"
+            key="11">
+            <div>
+              <h3>溢出测试</h3>
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            tab="Test"
+            key="12">
+            <div>
+              <h3>溢出测试</h3>
+            </div>
+          </Tabs.TabPane>
+        </Tabs>
+      </div>
 
-      <div>
+      <div style={{display: 'inline'}}>
         <Breadcrumb
           pixelSize={2}
           maxItems={2}>
@@ -247,7 +358,6 @@ function App() {
             maxWidth: "800px",
             margin: "0 auto",
             padding: "20px",
-            color: "black",
           }}>
           <section
             id="introduction"
@@ -275,6 +385,7 @@ function App() {
               style={{ height: "250px", marginBottom: "20px" }}>
               <h3>NPM 安装</h3>
               <code>npm install pixel-components</code>
+              <div>TEST COLOR</div>
             </div>
             <div
               id="yarn"

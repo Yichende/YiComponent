@@ -303,28 +303,3 @@ export const WithLongDescriptions: Story = {
     current: 1,
   },
 };
-
-// 深色背景适配
-export const OnDarkBackground: Story = {
-  render: (args) => (
-    <div style={{ 
-      width: '600px', 
-      backgroundColor: '#333', 
-      padding: '20px',
-      borderRadius: '4px'
-    }}>
-      <Steps {...args}>
-        <Steps.Step title="第一步" description="开始项目" />
-        <Steps.Step title="第二步" description="开发阶段" />
-        <Steps.Step title="第三步" description="测试阶段" />
-        <Steps.Step title="完成" description="项目交付" />
-      </Steps>
-    </div>
-  ),
-  args: {
-    current: 1,
-  },
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
-};
