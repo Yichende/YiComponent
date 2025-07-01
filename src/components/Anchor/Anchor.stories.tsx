@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Anchor } from "./Anchor";
-import "./Anchor.module.css"; // 确保 Storybook 能读取样式
+import "./Anchor.module.css";
 
 const meta: Meta<typeof Anchor> = {
   title: "Components/Anchor",

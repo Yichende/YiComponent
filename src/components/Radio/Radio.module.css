@@ -1,0 +1,179 @@
+:root {
+  --pixel-size: 2px;
+  --main-color: #4a90e2;
+  --highlight: #6aa8ff;
+  --shadow: #2c6cb0;
+  --text-color: #333;
+  --border-color: #000;
+  --menu-bg: #fff;
+  --item-hover: #f0f0f0;
+  --active-color: #fff;
+  --active-bg-color: #e24a4a;
+  --active-boder-color: #cb272d;
+  --active-color-shadow: #cb272d;
+}
+.radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: "Press Start 2P", "Ark Pixel", monospace;
+  font-size: 12px;
+  margin-right: 16px;
+  position: relative;
+}
+
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radioInner {
+  --radio-border: var(--border-color);
+  --radio-bg: var(--menu-bg);
+  --radio-shadow: var(--shadow);
+  --radio-active-shadow: var(--active-color-shadow, #cb272d);
+  --radio-hover-bg: var(--item-hover, #f0f0f0);
+  --radio-active-bg: var(--active-bg-color, #e24a4a);
+  --radio-active-border: var(--active-boder-color, #cb272d);
+  --radio-active-text: var(--active-color, #fff);
+
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--radio-border);
+  background-color: var(--radio-bg);
+  box-shadow: var(--pixel-size) var(--pixel-size) 0 var(--radio-shadow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.radioLabel {
+  color: var(--text-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+.radioDot {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--active-color);
+}
+
+.radio:not(.disabled):hover .radioInner {
+  transform: translate(1px, 1px);
+}
+
+.radio.checked .radioInner {
+  background-color: var(--radio-active-bg);
+  border-color: var(--radio-active-border);
+  transform: translate(2px, 2px);
+  box-shadow: calc(var(--pixel-size) * 0.5) calc(var(--pixel-size) * 0.5) 0
+    var(--radio-active-shadow);
+}
+
+.radio.checked .radioLabel {
+  color: #e24a4a;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.radio.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 单选按钮组 */
+.radioGroup {
+  display: flex;
+}
+
+.radioGroup.horizontal {
+  flex-direction: row;
+  gap: 16px;
+}
+
+.radioGroup.vertical {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radioGroup.vertical .radioButton {
+  width: auto;
+  align-self: flex-start;
+}
+
+/* 按钮样式单选 */
+.radioButton {
+  --pixel-size: 2px;
+  --radio-border: var(--border-color, #000);
+  --radio-bg: var(--menu-bg, #fff);
+  --radio-shadow: var(--shadow, #2c6cb0);
+  --radio-active-shadow: var(--active-color-shadow, #cb272d);
+  --radio-hover-bg: var(--item-hover, #f0f0f0);
+  --radio-active-bg: var(--active-bg-color, #e24a4a);
+  --radio-active-border: var(--active-boder-color, #cb272d);
+  --radio-text-color: var(--text-color, #333);
+  --radio-active-text: var(--active-color, #fff);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Press Start 2P", "Ark Pixel", monospace;
+  font-size: 12px;
+  padding: 6px 12px;
+  background-color: var(--radio-bg);
+  border: 2px solid var(--radio-border);
+  color: var(--radio-text-color);
+  box-shadow: var(--pixel-size) var(--pixel-size) 0 var(--radio-shadow);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  position: relative;
+  margin-right: 8px;
+  user-select: none;
+}
+
+.buttonContent {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.radioButton:not(.disabled):hover {
+  background-color: var(--radio-hover-bg);
+  transform: translate(1px, 1px);
+  box-shadow: calc(var(--pixel-size) * 1.5) calc(var(--pixel-size) * 1.5) 0
+    var(--radio-shadow);
+}
+
+.radioButton.checked {
+  background-color: var(--radio-active-bg);
+  border-color: var(--radio-active-border);
+  color: var(--radio-active-text);
+  transform: translate(2px, 2px);
+  box-shadow: calc(var(--pixel-size) * 0.5) calc(var(--pixel-size) * 0.5) 0
+    var(--radio-active-shadow);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.radioButton.checked:hover:not(.disabled) {
+  background-color: var(--radio-active-bg);
+  border-color: var(--radio-active-border);
+  color: var(--radio-active-text);
+  transform: translate(2px, 2px);
+  box-shadow: calc(var(--pixel-size) * 0.5) calc(var(--pixel-size) * 0.5) 0
+    var(--radio-active-shadow);
+}
+
+.radioButton.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

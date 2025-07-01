@@ -9,6 +9,7 @@ import {
   Pagination,
   Steps,
   Tabs,
+  Radio,
 } from "./components/index";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
     setActiveTab(key);
     console.log(`切换到标签页: ${key}`);
   };
+
   return (
     <>
       <Menu
@@ -80,6 +82,22 @@ function App() {
           color="#fff"
         />
       </div>
+
+      <Radio.Group direction="vertical">
+        <Radio.Button value="apple">苹果</Radio.Button>
+        <Radio.Button value="banana">香蕉</Radio.Button>
+        <Radio.Button value="orange">橙子</Radio.Button>
+        <Radio.Button
+          value="grape"
+          disabled>
+          葡萄
+          <Icon
+            name="lock"
+            size="sm"
+          />
+        </Radio.Button>
+      </Radio.Group>
+
       <Steps current={2}>
         <Steps.Step
           title="第一步"
@@ -107,7 +125,7 @@ function App() {
         showSizeChanger
         showQuickJumper
       />
-      <div style={{display: 'inline', minWidth: "70vw", height: "40vh"}}>
+      <div style={{ display: "inline", minWidth: "70vw", height: "40vh" }}>
         <Tabs
           activeKey={activeTab}
           onChange={handleTabChange}
@@ -212,7 +230,7 @@ function App() {
         </Tabs>
       </div>
 
-      <div style={{display: 'inline'}}>
+      <div style={{ display: "inline" }}>
         <Breadcrumb
           pixelSize={2}
           maxItems={2}>
