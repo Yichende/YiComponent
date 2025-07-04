@@ -10,6 +10,7 @@ import {
   Steps,
   Tabs,
   Radio,
+  Checkbox
 } from "./components/index";
 
 function App() {
@@ -83,7 +84,7 @@ function App() {
         />
       </div>
 
-      <Radio.Group direction="vertical">
+      <Radio.Group direction="horizontal">
         <Radio.Button value="apple">苹果</Radio.Button>
         <Radio.Button value="banana">香蕉</Radio.Button>
         <Radio.Button value="orange">橙子</Radio.Button>
@@ -97,6 +98,15 @@ function App() {
           />
         </Radio.Button>
       </Radio.Group>
+
+      <Checkbox.Group
+        defaultValue={["apple"]}
+        options={["apple", "banana", "orange"]}
+        direction="horizontal" withSelectAll>
+        <Checkbox value="apple">Apple</Checkbox>
+        <Checkbox value="banana">Banana</Checkbox>
+        <Checkbox value="orange">Orange</Checkbox>
+      </Checkbox.Group>
 
       <Steps current={2}>
         <Steps.Step

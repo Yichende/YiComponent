@@ -1,0 +1,105 @@
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Press Start 2P', 'Ark Pixel', monospace;
+  font-size: 12px;
+  margin-right: 16px;
+  position: relative;
+  width: max-content;
+}
+
+.checkboxInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkboxBox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color, #000);
+  background-color: var(--menu-bg, #fff);
+  box-shadow: 2px 2px 0 var(--shadow, #2c6cb0);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.checkboxIcon {
+  font-size: 10px;
+  line-height: 1;
+  color: var(--active-color, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkboxLabel {
+  color: var(--text-color, #333);
+}
+
+.checkbox:not(.disabled):hover .checkboxBox {
+  background-color: var(--item-hover, #f0f0f0);
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 var(--shadow, #2c6cb0);
+}
+
+.checkbox.checked:not(.disabled):hover .checkboxBox {
+  background-color: var(--active-bg-color, #e24a4a);
+}
+
+.checkbox.checked .checkboxBox,
+.checkbox.indeterminate .checkboxBox {
+  background-color: var(--active-bg-color, #e24a4a);
+  border-color: var(--active-bg-color, #e24a4a);
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--shadow, #2c6cb0);
+}
+
+.checkbox.checked .checkboxLabel,
+.checkbox.indeterminate .checkboxLabel {
+  color: var(--active-color, #fff);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.checkbox.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: max-content;
+}
+
+.checkboxGroup.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.checkboxGroup.vertical {
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+
+.checkbox.selectAll .checkboxBox {
+  background-color: var(--active-bg-color, #e24a4a);
+  border-color: var(--active-bg-color, #e24a4a);
+}
+.checkbox.selectAll .checkboxBox:hover {
+  background-color: var(--active-bg-color, #e24a4a);
+  border-color: var(--active-bg-color, #e24a4a);
+}
+.checkbox.selectAll .checkboxLabel {
+  color: var(--active-color, #fff);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}

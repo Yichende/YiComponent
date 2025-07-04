@@ -94,6 +94,7 @@
 /* 单选按钮组 */
 .radioGroup {
   display: flex;
+  width: max-content;
 }
 
 .radioGroup.horizontal {
