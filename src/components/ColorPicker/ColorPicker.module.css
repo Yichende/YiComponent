@@ -1,0 +1,290 @@
+.colorPicker {
+  --pixel-size: 2px;
+  --main-color: #4a90e2;
+  --highlight: #6aa8ff;
+  --shadow: #2c6cb0;
+  --text-color: #333;
+  --border-color: #000;
+  --menu-bg: #fff;
+  --item-hover: #f0f0f0;
+  --active-color: #e24a4a;
+  
+  position: relative;
+  display: inline-block;
+  font-family: 'Press Start 2P', 'Ark Pixel', monospace;
+  font-size: 12px;
+  z-index: 100;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 6px 12px;
+  background-color: var(--menu-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow);
+  transition: all 0.1s ease;
+}
+
+.colorPicker:not(.disabled):hover .trigger {
+  background-color: var(--item-hover);
+  transform: translate(1px, 1px);
+  box-shadow: 
+    calc(var(--pixel-size) * 1.5) calc(var(--pixel-size) * 1.5) 0 var(--shadow);
+}
+
+/* 尺寸 */
+.colorPicker.sm {
+  --pixel-size: 1.5px;
+  font-size: 10px;
+}
+
+.colorPicker.md {
+  --pixel-size: 2px;
+  font-size: 12px;
+}
+
+.colorPicker.lg {
+  --pixel-size: 2.5px;
+  font-size: 14px;
+}
+
+/* 尺寸的具体样式 */
+.colorPicker.sm .trigger {
+  padding: 4px 8px;
+}
+
+.colorPicker.lg .trigger {
+  padding: 8px 16px;
+}
+
+.colorPicker.sm .colorPreview,
+.colorPicker.sm .presetColor {
+  width: 16px;
+  height: 16px;
+}
+
+.colorPicker.lg .colorPreview,
+.colorPicker.lg .presetColor {
+  width: 28px;
+  height: 28px;
+}
+
+.colorPicker.sm .currentColor {
+  width: 40px;
+  height: 40px;
+}
+
+.colorPicker.lg .currentColor {
+  width: 60px;
+  height: 60px;
+}
+
+.colorPicker.sm .panel {
+  width: 220px;
+  padding: 12px;
+}
+
+.colorPicker.lg .panel {
+  width: 300px;
+  padding: 20px;
+}
+
+.colorPicker.sm .colorInput {
+  padding: 4px 6px;
+  font-size: 10px;
+}
+
+.colorPicker.lg .colorInput {
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+
+.colorPreview {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-right: 8px;
+  box-shadow: 
+    inset 1px 1px 0 rgba(255, 255, 255, 0.2), 
+    inset -1px -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.colorValue {
+  color: var(--text-color);
+  min-width: 70px;
+}
+
+.arrowIcon {
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  width: 260px;
+  background-color: var(--menu-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    calc(var(--pixel-size) * 3) calc(var(--pixel-size) * 3) 0 var(--shadow),
+    var(--pixel-size) var(--pixel-size) 0 var(--shadow);
+  padding: 16px;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.colorDisplay {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.currentColor {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    inset 1px 1px 0 rgba(255, 255, 255, 0.2), 
+    inset -1px -1px 0 rgba(0, 0, 0, 0.1);
+  margin-right: 12px;
+}
+
+.colorInfo {
+  flex: 1;
+}
+
+.colorHex {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: var(--text-color);
+}
+
+.colorInput {
+  width: 100%;
+  padding: 6px 8px;
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    inset 1px 1px 0 var(--shadow);
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--text-color);
+  background-color: var(--menu-bg);
+}
+
+.colorInput:focus {
+  outline: none;
+  box-shadow: 
+    inset 1px 1px 0 var(--shadow),
+    0 0 0 2px var(--highlight);
+}
+
+.sliders {
+  margin-bottom: 16px;
+}
+
+.sliderGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sliderLabel {
+  width: 20px;
+  color: var(--text-color);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.slider {
+  flex: 1;
+  height: 10px;
+  margin-right: 8px;
+  background: linear-gradient(to right, #ccc, #888);
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    inset 1px 1px 0 var(--shadow);
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: var(--menu-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    1px 1px 0 var(--shadow);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: var(--menu-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    1px 1px 0 var(--shadow);
+  cursor: pointer;
+}
+
+.sliderValue {
+  width: 40px;
+  text-align: right;
+  color: var(--text-color);
+  font-size: 10px;
+}
+
+.presets {
+  border-top: 2px solid var(--border-color);
+  padding-top: 16px;
+}
+
+.presetsTitle {
+  color: var(--text-color);
+  font-size: 12px;
+  margin: 0 0 10px 0;
+}
+
+.presetsGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+}
+
+.presetColor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  box-shadow: 
+    inset 1px 1px 0 rgba(255, 255, 255, 0.2), 
+    inset -1px -1px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.presetColor:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 0 0 2px var(--highlight);
+}
+
+.disabled .trigger {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabled .presetColor,
+.disabled .slider {
+  cursor: not-allowed;
+}

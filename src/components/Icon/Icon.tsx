@@ -15,7 +15,8 @@ interface IconProps {
 
 // 动态导入所有 svg 文件（作为字符串）
 const modules = import.meta.glob('@icons/*.svg', {
-  as: 'raw',
+  query: '?raw',
+  import: 'default',  
   eager: true,
 })
 

@@ -10,7 +10,8 @@ import {
   Steps,
   Tabs,
   Radio,
-  Checkbox
+  Checkbox,
+  ColorPicker,
 } from "./components/index";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const [pageSize, setPageSize] = useState(10);
   const totalItems = 87;
   const [activeTab, setActiveTab] = useState("1");
+  const [primaryColor, setPrimaryColor] = useState("#4a90e2");
 
   const handlePageChange = (page: number, size: number) => {
     setCurrentPage(page);
@@ -83,6 +85,11 @@ function App() {
           color="#fff"
         />
       </div>
+      <ColorPicker
+        size='sm'
+        value={primaryColor}
+        onChange={setPrimaryColor}
+      />
 
       <Radio.Group direction="horizontal">
         <Radio.Button value="apple">苹果</Radio.Button>
@@ -102,7 +109,8 @@ function App() {
       <Checkbox.Group
         defaultValue={["apple"]}
         options={["apple", "banana", "orange"]}
-        direction="horizontal" withSelectAll>
+        direction="horizontal"
+        withSelectAll>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="banana">Banana</Checkbox>
         <Checkbox value="orange">Orange</Checkbox>

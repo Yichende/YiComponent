@@ -3,7 +3,8 @@ import { Icon } from './Icon'
 
 // 读取所有图标名称（通过 import.meta.glob 同步导入 SVG 原始内容）
 const iconModules = import.meta.glob('@icons/*.svg', {
-  as: 'raw',
+  query: '?raw',
+  import: 'default',
   eager: true,
 })
 
