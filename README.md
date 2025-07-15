@@ -1,50 +1,118 @@
-# React + TypeScript + Vite
+------
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+~~~markdown
+# 🧱 @yichend/yi-pixel-component
 
-Currently, two official plugins are available:
+A **pixel-style React UI component library** inspired by retro games. Carefully crafted with sharp edges, monospace fonts, and low-res aesthetics. Perfect for building nostalgic UIs or game-like web interfaces.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![npm version](https://img.shields.io/npm/v/@yichend/yi-pixel-component.svg)](https://www.npmjs.com/package/@yichend/yi-pixel-component)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 📦 Installation
 
-- Configure the top-level `parserOptions` property like this:
+Using **npm**:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install @yichend/yi-pixel-component
+~~~
+
+Using **yarn**:
+
+```bash
+yarn add @yichend/yi-pixel-component
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Using **pnpm**:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+pnpm add @yichend/yi-pixel-component
 ```
+
+------
+
+## 🚀 Quick Start
+
+1. Import `Press Start 2P` font (required for pixel look):
+
+```ts
+import '@fontsource/press-start-2p'; // optional, but recommended
+```
+
+1. Import components you need:
+
+```tsx
+import { YiButton, Checkbox, ColorPicker } from '@yichend/yi-pixel-component';
+```
+
+1. Use in JSX:
+
+```tsx
+<YiButton>Start Game</YiButton>
+
+<Checkbox value="apple" checked={true} onChange={() => {}}>
+  Apple
+</Checkbox>
+
+<ColorPicker defaultValue="#fa8c16" onChange={(color) => console.log(color)} />
+```
+
+------
+
+## 🧩 Available Components
+
+| Component     | Description                                |
+| ------------- | ------------------------------------------ |
+| `YiButton`    | Pixel-style button with press feedback     |
+| `Anchor`      | Floating anchor/navigation widget          |
+| `Icon`        | Pixel-style SVG icon renderer              |
+| `Breadcrumb`  | Breadcrumb with dropdown overflow support  |
+| `Dropdown`    | Basic dropdown and dropdown item           |
+| `Menu`        | Horizontal/vertical menu with icon/label   |
+| `Pagination`  | Pagination bar with controls and inputs    |
+| `Steps`       | Multi-step progress indicator              |
+| `Tabs`        | Tab component with scroll/overflow support |
+| `Radio`       | Pixel-style radio buttons                  |
+| `Checkbox`    | Checkbox with indeterminate and select-all |
+| `ColorPicker` | Full-featured pixel-style color selector   |
+
+> 📌 More components in development...
+
+------
+
+## 🧱 Pixel Design Principles
+
+- Retro pixelated UI using `Press Start 2P` or `Ark Pixel` font
+- Pure CSS pixel borders and shadows
+- No external UI dependencies
+- Designed for React 18+
+
+------
+
+## 🧪 Development
+
+To run locally:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+To view Storybook:
+
+```bash
+pnpm storybook
+```
+
+To build:
+
+```bash
+pnpm build
+```
+
+------
+
+## 📘 License
+
+MIT © [Yichend](https://github.com/Yichende)

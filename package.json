@@ -1,11 +1,13 @@
 {
-  "name": "yi-component",
-  "private": true,
+  "name": "@yichend/yi-pixel-component",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "run-s build:vite build:types",
+    "build:types": "tsc --project tsconfig.build.json",
+    "build:vite": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -46,6 +48,7 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "eslint-plugin-storybook": "^0.11.1",
     "globals": "^15.12.0",
+    "npm-run-all": "^4.1.5",
     "playwright": "^1.52.0",
     "raw-loader": "^4.0.2",
     "storybook": "^8.6.14",
@@ -59,5 +62,22 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
-  }
+  },
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/types/index.d.ts",
+  "files": ["dist"],
+  "license": "MIT",
+  "author": "Yichend",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yichende/YiComponent.git"
+  },
+  "description": "A pixel-style React UI component library.",
+  "keywords": [
+    "react",
+    "component-library",
+    "pixel",
+    "ui"
+  ]
 }

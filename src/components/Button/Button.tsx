@@ -85,3 +85,5 @@ export const YiButton: FC<ButtonProps> = ({
     </button>
   );
 };
+
+export type { ButtonProps }
