@@ -1,34 +1,44 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
-import { fileURLToPath, URL } from "node:url";
 import path from "path";
+import { fileURLToPath, URL } from "node:url";
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), svgr()],
-  resolve: {
-    alias: {
-      "@icons": fileURLToPath(
-        new URL("./node_modules/pixelarticons/svg", import.meta.url)
-      ),
-    },
-  },
-  build: {
-    lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: "YiPixelComponent",
-      fileName: (format) => `yi-pixel-component.${format}.js`,
-    },
-    rollupOptions: {
-      external: ["react", "react-dom"],
-      output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-        },
+export default defineConfig(({ command }) => {
+  const isBuild = command === "build";
+
+  const config: any = {
+    plugins: [react(), svgr()],
+    resolve: {
+      alias: {
+        "@icons": fileURLToPath(
+          new URL("./node_modules/pixelarticons/svg", import.meta.url)
+        ),
       },
     },
-    outDir: 'dist'
-  },
+  };
+
+  if (isBuild) {
+    config.build = {
+      assetsInlineLimit: 0,
+      lib: {
+        entry: path.resolve(__dirname, "src/index.ts"),
+        name: "YiPixelComponent",
+        fileName: (format: string) => `yi-pixel-component.${format}.js`,
+        formats: ["es"],
+      },
+      outDir: "dist",
+      rollupOptions: {
+        external: ["react", "react-dom"],
+        output: {
+          globals: {
+            react: "React",
+            "react-dom": "ReactDOM",
+          },
+        },
+      },
+    };
+  }
+
+  return config;
 });
